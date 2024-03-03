@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../employee.module';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -12,13 +13,17 @@ export class EmployeeListComponent implements OnInit {
 
   dataSource: Employee[] = [];
 
-  displayedColumns: string[] = ['employeeId', 'employeeName', 'employeeContactNumber', 'employeeAddress', 'employeeDepartment', 'employeeGender', 'employeeSkills', 'delete'];
+  displayedColumns: string[] = ['employeeId', 'employeeName', 'employeeContactNumber', 'employeeAddress', 'employeeDepartment', 'employeeGender', 'employeeSkills', 'edit', 'delete'];
 
-  constructor(private employeeService: EmployeeService) {
+  constructor(private employeeService: EmployeeService, private router: Router) {
     this.getEmployeeList();
   }
   ngOnInit(): void {
 
+  }
+
+  updateEmployee(employeeId: number): void {
+    this.router.navigate(["/employee", { employeeId: employeeId }])
   }
 
   deleteEmployee(employeeId: number): void {
@@ -47,4 +52,6 @@ export class EmployeeListComponent implements OnInit {
       }
     );
   }
+
+
 }

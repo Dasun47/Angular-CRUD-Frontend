@@ -69,8 +69,8 @@
                         [checked]="checkSkills('Communication Skill')">Communication Skill</mat-checkbox>
                     <mat-checkbox (change)="onSkillsChanges($event)" value="AWS" class="example-margin"
                         [checked]="checkSkills('AWS')">AWS</mat-checkbox>
-                    <mat-checkbox (change)="onSkillsChanges($event)" value="Spring Boot" class="example-margin">Spring
-                        Boot</mat-checkbox>
+                    <mat-checkbox (change)="onSkillsChanges($event)" value="Spring Boot" class="example-margin"
+                        [checked]="checkSkills('Spring Boot')">Spring Boot</mat-checkbox>
                 </section>
             </div>
 
