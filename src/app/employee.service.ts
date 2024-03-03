@@ -15,4 +15,8 @@ export class EmployeeService {
   public saveEmployee(employee: Employee): Observable<Employee>{
     return this.httpClient.post<Employee>(`${this.api}/add/employee`, employee);
   }
+
+  public getEmployees(): Observable<Employee[]>{
+    return this.httpClient.get<Employee[]>(`${this.api}/get/allEmployees`);
+  }
 }
