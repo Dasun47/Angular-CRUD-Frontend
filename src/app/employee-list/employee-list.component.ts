@@ -12,13 +12,26 @@ export class EmployeeListComponent implements OnInit {
 
   dataSource: Employee[] = [];
 
-  displayedColumns: string[] = ['employeeId', 'employeeName', 'employeeContactNumber', 'employeeAddress', 'employeeDepartment', 'employeeGender', 'employeeSkills'];
+  displayedColumns: string[] = ['employeeId', 'employeeName', 'employeeContactNumber', 'employeeAddress', 'employeeDepartment', 'employeeGender', 'employeeSkills', 'delete'];
 
   constructor(private employeeService: EmployeeService) {
     this.getEmployeeList();
   }
   ngOnInit(): void {
 
+  }
+
+  deleteEmployee(employeeId: number): void {
+    this.employeeService.deleteEmployeeById(employeeId).subscribe(
+      {
+        next: (res) => {
+          this.getEmployeeList();
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      }
+    );
   }
 
   getEmployeeList(): void {
